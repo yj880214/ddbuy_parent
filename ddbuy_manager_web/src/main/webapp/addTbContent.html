@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>广告添加页面</title>
+    <!--导入文件-->
+    <link rel="stylesheet" type="text/css" href="easyUI/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="easyUI/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="easyUI/css/demo.css">
+    <!--第一步，导入js-->
+    <script  src="js/jquery-1.8.3.js"></script>
+    <!--第二步，导入easyui-->
+    <script  src="js/jquery.easyui.min.js" ></script>
+
+    <script type="text/javascript">
+        // 加载显示广告类型
+        $(function () { //触发js功能
+
+            // 加载easyUI前端框架：可装载组合框显示数据
+            $('#category').combobox({
+                url:'getTbContentCategory2',
+                valueField:'id',
+                textField:'name' //数据库对应的字段名
+            });
+
+            //  添加按钮的点击事件
+            $("#buttonId").click(function () {
+                alert("ok");
+                //获取表单对象执行提交
+                $("#formId").form("submit",
+                    {
+                        url:"addContent",
+                        type:"post",
+                        success:function (data) {
+                            alert(data);
+                            var data2=$.parseJSON(data);
+                            alert(data2);
+                            if (data2.result==1){
+                                $.messager.alert("提示信息","恭喜添加成功！")
+                            } else {
+                                $.messager.alert("提示信息","抱歉添加失败！")
+                            }
+                        }
+                    }
+                )
+            });
+        });
+
+
+
+    </script>
+
+</head>
+<body>
+  <form id="formId" name="form" method="post" enctype="multipart/form-data">
+      <p>广告类型：
+      <input id="category" name="categoryId" value="请选择"/>
+      </p>
+      <p>标题:
+      <input type="text" name="title"/>
+      </p>
+      <p>url:
+      <input type="text" name="url"/>
+      </p>
+      <p>图片：
+      <input type="file" name="file"/>
+      </p>
+      <p>状态：
+      <input type="radio" name="status" id="radio" value="1" />
+      启用:
+      <input type="radio" name="status" id="radio2" value="0"/>
+      禁用
+      </p>
+      <p>排序：
+      <input type="text" name="sortOrder" />
+      </p>
+      <p>
+      <input type="button" id="buttonId" value="添加"/>
+      </p>
+  </form>
+</body>
+</html>

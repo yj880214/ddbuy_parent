@@ -1,0 +1,8 @@
+工程备忘录：
+后台访问端口:8081
+后台管理首页：http://localhost:8081/admin.html
+前台门户访问的端口：8084
+门户首页：http://localhost:8084/goIndex
+
+ddbuy_search_web工程有问题，不用，
+替换使用ddbuy_search_web2

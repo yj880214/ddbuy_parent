@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+   <typeAliases>
+       <package name="com.ddbuy.entity" />
+       <!--<typeAlias type="com.grade.entity.Grade" alias="Grade"/>-->
+   </typeAliases>
+    <!--分页插件:支持-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+
+    <!--配置mapper.xml文件:mybatis快速配置所有的映射文件：到springboot配置文件中设置-->
+<!-- <mappers>
+        <mapper resource="com/ddbuy/mapper/TbContentCategoryMapper.xml"></mapper>
+        <mapper resource="com/ddbuy/mapper/TbContentCategoryMapper.xml"></mapper>
+        <mapper resource="com/ddbuy/mapper/TbContentCategoryMapper.xml"></mapper>
+        <mapper resource="com/ddbuy/mapper/TbContentCategoryMapper.xml"></mapper>
+    </mappers>-->
+
+
+</configuration>
